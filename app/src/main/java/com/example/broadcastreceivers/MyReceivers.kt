@@ -7,9 +7,13 @@ import android.widget.Toast
 
 class MyReceivers : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
+        val turnOn = intent?.getBooleanExtra("state",true)
         when(intent?.action){
             Intent.ACTION_AIRPLANE_MODE_CHANGED ->{
-                Toast.makeText(context,"ACTION_AIRPLANE_MODE_CHANGED",Toast.LENGTH_LONG).show()
+                Toast.makeText(context,"ACTION_AIRPLANE_MODE_CHANGED, $turnOn",Toast.LENGTH_LONG).show()
+            }
+            Intent.ACTION_BATTERY_LOW -> {
+                Toast.makeText(context,"ACTION_BATTERY_LOW",Toast.LENGTH_LONG).show()
             }
         }
     }
